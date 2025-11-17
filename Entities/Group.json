@@ -1,0 +1,58 @@
+{
+  "name": "Group",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the group"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the group"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "trip",
+        "home",
+        "couple",
+        "other"
+      ],
+      "default": "other"
+    },
+    "members": {
+      "type": "array",
+      "description": "List of member emails",
+      "items": {
+        "type": "string"
+      }
+    },
+    "image_url": {
+      "type": "string",
+      "description": "Group image URL"
+    },
+    "default_currency": {
+      "type": "string",
+      "default": "USD"
+    },
+    "default_split_method": {
+      "type": "string",
+      "enum": [
+        "equal",
+        "exact",
+        "percentage",
+        "shares"
+      ],
+      "default": "equal"
+    },
+    "simplify_debts": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to simplify debts in this group"
+    }
+  },
+  "required": [
+    "name",
+    "members"
+  ]
+}

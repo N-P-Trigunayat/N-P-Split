@@ -1,0 +1,26 @@
+{
+  "name": "Friend",
+  "type": "object",
+  "properties": {
+    "user_email": {
+      "type": "string",
+      "description": "Current user's email"
+    },
+    "friend_email": {
+      "type": "string",
+      "description": "Friend's email"
+    },
+    "friend_name": {
+      "type": "string",
+      "description": "Friend's display name"
+    },
+    "added_date": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "required": [
+    "user_email",
+    "friend_email"
+  ]
+}

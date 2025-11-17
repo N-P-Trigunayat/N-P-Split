@@ -1,0 +1,57 @@
+{
+  "name": "Settlement",
+  "type": "object",
+  "properties": {
+    "from_user": {
+      "type": "string",
+      "description": "Email of person who paid"
+    },
+    "to_user": {
+      "type": "string",
+      "description": "Email of person who received payment"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Amount settled"
+    },
+    "currency": {
+      "type": "string",
+      "default": "USD"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "note": {
+      "type": "string",
+      "description": "Optional note about the settlement"
+    },
+    "group_id": {
+      "type": "string",
+      "description": "ID of the group this settlement belongs to"
+    },
+    "payment_method": {
+      "type": "string",
+      "enum": [
+        "cash",
+        "venmo",
+        "paypal",
+        "zelle",
+        "bank_transfer",
+        "credit_card",
+        "other"
+      ],
+      "default": "cash"
+    },
+    "receipt_url": {
+      "type": "string",
+      "description": "URL to payment receipt/proof"
+    }
+  },
+  "required": [
+    "from_user",
+    "to_user",
+    "amount",
+    "date"
+  ]
+}

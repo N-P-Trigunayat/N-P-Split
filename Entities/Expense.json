@@ -1,0 +1,157 @@
+{
+  "name": "Expense",
+  "type": "object",
+  "properties": {
+    "description": {
+      "type": "string",
+      "description": "What was the expense for"
+    },
+    "amount": {
+      "type": "number",
+      "description": "Total amount paid"
+    },
+    "currency": {
+      "type": "string",
+      "default": "USD",
+      "description": "Currency code (USD, EUR, GBP, etc.)"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "food",
+        "transportation",
+        "entertainment",
+        "accommodation",
+        "utilities",
+        "shopping",
+        "groceries",
+        "healthcare",
+        "other"
+      ],
+      "default": "other"
+    },
+    "group_id": {
+      "type": "string",
+      "description": "ID of the group this expense belongs to"
+    },
+    "payers": {
+      "type": "array",
+      "description": "List of people who paid and their amounts",
+      "items": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "split_method": {
+      "type": "string",
+      "enum": [
+        "equal",
+        "exact",
+        "percentage",
+        "shares"
+      ],
+      "default": "equal",
+      "description": "How to split the expense"
+    },
+    "splits": {
+      "type": "array",
+      "description": "How the expense is split among people",
+      "items": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "percentage": {
+            "type": "number"
+          },
+          "shares": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "comments": {
+      "type": "array",
+      "description": "Comments on the expense",
+      "items": {
+        "type": "object",
+        "properties": {
+          "user_email": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "receipt_url": {
+      "type": "string",
+      "description": "URL to receipt image"
+    },
+    "payment_method": {
+      "type": "string",
+      "enum": [
+        "cash",
+        "venmo",
+        "paypal",
+        "zelle",
+        "bank_transfer",
+        "credit_card",
+        "other"
+      ],
+      "description": "How the payment was made"
+    },
+    "due_date": {
+      "type": "string",
+      "format": "date",
+      "description": "When payment is due"
+    },
+    "is_recurring": {
+      "type": "boolean",
+      "default": false
+    },
+    "recurrence_pattern": {
+      "type": "string",
+      "enum": [
+        "daily",
+        "weekly",
+        "monthly",
+        "yearly"
+      ],
+      "description": "Recurrence frequency"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Custom tags for the expense"
+    }
+  },
+  "required": [
+    "description",
+    "amount",
+    "date",
+    "payers",
+    "splits"
+  ]
+}
